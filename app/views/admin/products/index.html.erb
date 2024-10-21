@@ -1,0 +1,65 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <% content_for :title, "Products" %>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Products</h1>
+    <%= link_to "New product", new_admin_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+  <div class="flex mt-4">
+    <table class="w-full">
+      <thead class="bg-blue-200">
+        <tr class="border border-black">
+          <th>
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Category
+          </th>
+          <th>
+            Active
+          </th>
+          <th>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-blue-50">
+        <% @admin_products.each do |c|%>
+          <tr>
+            <td class="items-center justify-center px-6 py-4">
+              <%= c.images.any? ? image_tag(c.images.first.variant(:thumb)) : image_tag("https://via.placeholder.com/50")%>
+            </td>
+            <td class="align-middle text-center">
+              <%= c.name%>
+            </td>
+            <td class="align-middle text-center">
+              <%= c.description%>
+            </td>
+            <td class="align-middle text-center">
+              RM<%= (c.price/100.00).to_s%>
+            </td>
+            <td class="align-middle text-center">
+              <%= c.category_id%>
+            </td>
+            <td class="align-middle text-center">
+              <%= c.active%>
+            </td>
+            <td class="flex py-4 justify-center">
+              <%= link_to "Show this Product", edit_admin_product_path(c), class: "rounded-lg py-3 px-5 bg-blue-400 inline-block font-medium"%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

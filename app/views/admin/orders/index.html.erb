@@ -1,0 +1,101 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <% content_for :title, "Orders" %>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Orders</h1>
+    <%= link_to "New order", new_admin_order_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+  <h3>Unfulfilled Orders</h3>
+  <div class="flex mt-4">
+    <table class="w-full">
+      <thead class="bg-blue-200">
+        <tr class="border border-black">
+          <th>
+            Email
+          </th>
+          <th>
+            Fulfilled
+          </th>
+          <th>
+            Total
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-blue-50">
+        <% @not_fulfilled_admin_orders.each do |o|%>
+          <tr>
+            <td class="items-center justify-center px-6 py-4">
+              <%= o.customer_email %>
+            </td>
+            <td class="align-middle text-center">
+              <%= o.fulfilled %>
+            </td>
+            <td class="align-middle text-center">
+              <%= o.total %>
+            </td>
+            <td class="align-middle text-center">
+              <%= o.address %>
+            </td>
+            <td class="flex py-4 justify-center">
+              <%= link_to "Show this category", edit_admin_order_path(o), class: "rounded-lg py-3 px-5 bg-blue-400 inline-block font-medium"%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <h3>Fulfilled Orders</h3>
+  <div class="flex mt-4">
+    <table class="w-full">
+      <thead class="bg-blue-200">
+        <tr class="border border-black">
+          <th>
+            Email
+          </th>
+          <th>
+            Fulfilled
+          </th>
+          <th>
+            Total
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-blue-50">
+        <% @fulfilled_admin_orders.each do |o|%>
+          <tr>
+            <td class="items-center justify-center px-6 py-4">
+              <%= o.customer_email %>
+            </td>
+            <td class="align-middle text-center">
+              <%= o.fulfilled %>
+            </td>
+            <td class="align-middle text-center">
+              <%= o.total %>
+            </td>
+            <td class="align-middle text-center">
+              <%= o.address %>
+            </td>
+            <td class="flex py-4 justify-center">
+              <%= link_to "Show this category", edit_admin_order_path(o), class: "rounded-lg py-3 px-5 bg-blue-400 inline-block font-medium"%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

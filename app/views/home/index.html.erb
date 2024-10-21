@@ -1,0 +1,13 @@
+<h1>Home</h1>
+<%= icon('fa-brands', 'font-awesome')%>
+<br>
+<%= icon('fa-solid', 'user-secret')%>
+<p>
+  <%= link_to "Sign In", new_admin_session_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</p>
+<p>
+  <%= link_to "Admin Page", admin_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</p>
+<p>
+  <%= button_to "Sign Out", destroy_admin_session_path, method: :delete, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"%>
+</p>
